@@ -10,6 +10,18 @@ import './app.css';
 
 class App extends Component {
 
+  static propTypes = {
+    user: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
+  }
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired
+  }
+
   handleLogout() {
     const { user } = this.props;
     this.props.dispatch(logout(user));
@@ -20,7 +32,6 @@ class App extends Component {
     const { user } = this.props;
     return (
       <div className="container">
-
         <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
         <div className="container appContent">
           {this.props.children}
@@ -31,18 +42,6 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  user: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
-};
-
-App.contextTypes = {
-  router: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
-};
-
 const mapStateToProps = (state) => {
   const { auth } = state;
   return {
@@ -50,6 +49,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateToProps
-)(App);
+export default connect(mapStateToProps)(App);

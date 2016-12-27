@@ -5,6 +5,11 @@ import Alerts from './Alerts';
 import './header.css';
 
 export default class Header extends Component {
+        static defaultProps = {
+        checked: false,
+        maxLength: 10
+    }
+
   onLogoutClick = (event) => {
     event.preventDefault();
     this.props.handleLogout();
@@ -17,6 +22,8 @@ export default class Header extends Component {
     const isAboutPage = pathname.indexOf('about') > -1;
     const isUsersPage = pathname.indexOf('users') > -1;
     const isReposPage = pathname.indexOf('repos') > -1;
+    const isTodoPage = pathname.indexOf('todo') > -1;
+    const isAsync = pathname.indexOf('async') > -1;
 
     return (
       !isLoginPage &&
@@ -34,6 +41,8 @@ export default class Header extends Component {
                 Home
               </IndexLink>
               <ul className="nav navbar-nav">
+                <li title="todo" className={isTodoPage ? 'nav-item active' : 'nav-item'}><Link to="/todo" className="nav-link">Todo</Link></li>
+                <li title="async" className={isAsync ? 'nav-item active' : 'nav-item'}><Link to="/async" className="nav-link">Async</Link></li>
                 <li title="Github Users with over 1000 Followers" className={isUsersPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/users">Most Followed Users</Link></li>
                 <li title="Github Repos with over 10000 Stars" className={isReposPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/repos">Most Starred Repos</Link></li>
                 <li title="About" className={isAboutPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About Us</Link></li>

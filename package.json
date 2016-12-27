@@ -1,38 +1,9 @@
 {
-  "name": "react-redux-starter-kit",
-  "homepage": "https://cloudmu.github.com/react-redux-starter-kit",
+  "name": "coke-App",
   "version": "1.0.0",
-  "description": "React/Redux Starter Kit with Zero Build Configuration",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cloudmu/react-redux-starter-kit.git"
-  },
-  "keywords": [
-    "react",
-    "reactjs",
-    "redux",
-    "reduxjs",
-    "react-router",
-    "bootstrap",
-    "webpack",
-    "flux",
-    "jwt",
-    "autho0",
-    "dashboard",
-    "starter kit",
-    "boilerplate",
-    "create-react-app",
-    "websockets",
-    "socket.io"
-  ],
-  "author": "twitter.com/_cloudmu (http://github.com/cloudmu)",
+  "description": "Hello Coke",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
-  },
-
   "proxy": "http://localhost:3001",
-  
   "devDependencies": {
     "react-scripts": "0.8.4"
   },
@@ -56,7 +27,7 @@
     "react-virtualized": "^8.7.1",
     "socket.io-client": "^1.7.2"
   },
-  
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

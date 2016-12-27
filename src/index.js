@@ -15,17 +15,21 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute} from 'react-router';
 
 /////////////////////////////////////////////////////////////////////////
-// browserHistory would be preferred over hashHistory, but browserHistory 
+// browserHistory would be preferred over hashHistory, but browserHistory
 // would require configuring the server. So we will use hashHistory here.
 // Please change to browserHistory if you have your own backend server.
 // import {browserHistory as history} from 'react-router';
-import { useRouterHistory } from 'react-router';
-import { createHashHistory } from 'history'
-const history = useRouterHistory(createHashHistory)();
+//import { useRouterHistory } from 'react-router';
+//import { createHashHistory } from 'history';
+//const history = useRouterHistory(createHashHistory)();
+
+//import { browserHistory as history} from 'react-router';
+import { hashHistory as history} from 'react-router';
+
 //////////////////////////////////////////////////////////////////////////
 
 import configureStore from './store/configureStore';
-import connectToAlerts from './utils/socketUtils';
+//import connectToAlerts from './utils/socketUtils'; //socket io
 
 import App from './containers/app/App';
 import Login from './containers/login/Login';
@@ -34,12 +38,14 @@ import Home from './containers/home/Home';
 import UsersPage from './containers/user/UsersPage';
 import ReposPage from './containers/repo/ReposPage';
 import About from './containers/about/About';
+import TodoList from './containers/todolist/TodoList';
+import Async from './containers/async/Async';
 import NotFound from './containers/misc/NotFound';
 
 import './index.css';
 
 const store = configureStore();
-connectToAlerts(store);
+//connectToAlerts(store);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -48,6 +54,8 @@ ReactDOM.render(
           <IndexRoute component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/login" component={Login}/>
+          <Route path="/todo" component={TodoList}/>
+          <Route path="/async" component={Async}/>
           <Route component={RestrictPage}>
             <Route path="/users" component={UsersPage} />
             <Route path="/repos" component={ReposPage} />
